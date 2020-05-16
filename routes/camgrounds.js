@@ -21,7 +21,11 @@ router.post("/", function(req, res){
     let name = req.body.name;
     let img = req.body.image;
     let desc = req.body.description;
-    let newCampground = {name: name, image: img, description: desc}
+    let author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    let newCampground = {name: name, image: img, description: desc, author:author}
 
     Campground.create(newCampground, function(err, newCreated){
         if(err){
