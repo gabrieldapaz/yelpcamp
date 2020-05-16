@@ -1,3 +1,5 @@
+// ROUTES INDEX
+
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
@@ -45,6 +47,7 @@ router.post("/login", passport.authenticate("local",
 // logout route
 router.get("/logout", function(req, res){
     req.logout();
+    req.flash("success", "Logged you out!");
     res.redirect("/campgrounds");
 });
 
