@@ -17,7 +17,8 @@ var commentRoutes = require("./routes/comments"),
     indexRoutes = require("./routes/index");
 
 //seedDB();
-mongoose.connect(process.env.DATABASEURL, {useUnifiedTopology:true, useNewUrlParser:true});
+var url =  process.env.DATABASEURL || "mongodb://localhost/yelp_camp"
+mongoose.connect(url, {useUnifiedTopology:true, useNewUrlParser:true});
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
