@@ -22,11 +22,12 @@ router.post("/", function(req, res){
     let name = req.body.name;
     let img = req.body.image;
     let desc = req.body.description;
+    let price = req.body.price;
     let author = {
         id: req.user._id,
         username: req.user.username
     }
-    let newCampground = {name: name, image: img, description: desc, author:author}
+    let newCampground = {name: name, price: price,image: img, description: desc, author:author}
 
     Campground.create(newCampground, function(err, newCreated){
         if(err){
@@ -50,6 +51,7 @@ router.get("/:id", function(req, res){
         if(err){
             console.log(err);
         }else{
+            console.log("Dalee")
             console.log(foundCampground);
             res.render("campgrounds/show", {campground:foundCampground});
         }
